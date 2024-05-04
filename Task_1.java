@@ -231,7 +231,7 @@ class ToyShop {
     public static void WriteAllLotery(PriorityQueue<ArrayList<HashMap<String,String>>> myListLottery) {
 
       try {
-        FileWriter writer = new FileWriter("output.txt", true);
+        FileWriter writer = new FileWriter("output.txt", false);
         
         Integer cnt = 1;
         String tmpString = "";
