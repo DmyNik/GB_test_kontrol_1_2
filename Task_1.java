@@ -164,7 +164,7 @@ class ToyShop {
       System.out.println("> ДЕМОНСТРАЦИЯ ОДНОГО РОЗЫГРЫША: ");
       System.out.println(" ---------------------- ");
       // Выводим на экран розыгрыш игрушки
-      PrintLotery(listToy);
+      System.out.println(PrintLotery(listToy));
        
       System.out.println("> ДЕМОНСТРАЦИЯ СЕРИИ РОЗЫГРЫШЕЙ: ");
       System.out.println(" ---------------------- ");
@@ -210,11 +210,13 @@ class ToyShop {
     public static void PrintAllLotery(PriorityQueue<ArrayList<HashMap<String,String>>> myListLottery) {
 
       Integer cnt = 1;
-      System.out.println(" ---------------------- ");
-      for (ArrayList<HashMap<String,String>> element: myListLottery) {
-        System.out.println("> РОЗЫГРЫШ №: " + cnt.toString());
-        System.out.println("> Дата проведения: " + element.get(0).get("date"));
-        System.out.println(" ---------------------- ");
+      String tmpString = "";
+      tmpString += " ---------------------- ";
+      for (ArrayList<HashMap<String,String>> element: myListLottery) {        
+        tmpString += "\n> РОЗЫГРЫШ №: " + cnt.toString();        
+        tmpString += "\n> Дата проведения: " + element.get(0).get("date");        
+        tmpString += "\n ---------------------- ";
+        System.out.println(tmpString);
         System.out.println(PrintLotery(element));
         cnt++;
       }  
