@@ -184,6 +184,9 @@ class ToyShop {
 
       // Выводим на экран все розыгрыши
       PrintAllLotery(listLottery);
+
+      // Записывает все розыгрыши в файл
+      WriteAllLotery(listLottery);
             
     }
 
@@ -212,8 +215,10 @@ class ToyShop {
       Integer cnt = 1;
       String tmpString = "";
       tmpString += " ---------------------- ";
+      System.out.println(tmpString);
       for (ArrayList<HashMap<String,String>> element: myListLottery) {        
-        tmpString += "\n> РОЗЫГРЫШ №: " + cnt.toString();        
+        tmpString = "";
+        tmpString += "> РОЗЫГРЫШ №: " + cnt.toString();        
         tmpString += "\n> Дата проведения: " + element.get(0).get("date");        
         tmpString += "\n ---------------------- ";
         System.out.println(tmpString);
@@ -223,21 +228,37 @@ class ToyShop {
 
     }
 
-    public static void WriteAllLotery() {
+    public static void WriteAllLotery(PriorityQueue<ArrayList<HashMap<String,String>>> myListLottery) {
 
       try {
-        FileWriter writer = new FileWriter("fileForWrite.txt", true);
-  
-        writer.write("Hello, Hexlet!"); // Hello, Hexlet!
+        FileWriter writer = new FileWriter("output.txt", true);
+        
+        Integer cnt = 1;
+        String tmpString = "";
+        tmpString += "> РЕЗУЛЬТАТЫ РОЗЫГРЫШЕЙ ИГРУШЕК";
+        tmpString += "\n ---------------------- ";
+        writer.write(tmpString);
+        for (ArrayList<HashMap<String,String>> element: myListLottery) {        
+          tmpString = "";
+          tmpString += "\n> РОЗЫГРЫШ №: " + cnt.toString();        
+          tmpString += "\n> Дата проведения: " + element.get(0).get("date");        
+          tmpString += "\n ---------------------- \n";
+          
+          writer.write(tmpString);
+          writer.write(PrintLotery(element));
+
+          cnt++;
+        }
+
         writer.write("\n");
-  
         writer.close();
+
+        System.out.println("> Файл записан!");
   
       } catch (IOException e) {
         System.out.println("Возникла ошибка во время записи файла, проверьте данные.");
       }
 
-    }
-    
+    }    
 
   }
