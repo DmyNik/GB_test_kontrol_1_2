@@ -1,5 +1,7 @@
 import java.util.Random;
 import java.util.PriorityQueue;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -136,9 +138,9 @@ class ToyShop {
       id1 = "1";
       id2 = "2";
       id3 = "3";  
-      name1 = "Elephant";
-      name2 = "Leon";
-      name3 = "Rhinoceros";
+      name1 = "Слон";
+      name2 = "Лев";
+      name3 = "Носорог";
       probability1 = "10";
       probability2 = "5";
       probability3 = "2";            
@@ -185,18 +187,24 @@ class ToyShop {
             
     }
 
-    public static void PrintLotery(ArrayList<HashMap<String,String>> myListToy) {
+    public static String PrintLotery(ArrayList<HashMap<String,String>> myListToy) {
       String tmpStr = "";
       Integer cnt = 0;
-      System.out.println("> Результат розыгрыша игрушек: ");
-      System.out.println(" ---------------------- ");
+      
+      tmpStr += "> Результат розыгрыша игрушек: ";
+      
+      tmpStr += "\n ---------------------- ";
       for (HashMap<String, String> element: myListToy) {
-        tmpStr = "";
+      
         cnt++;
-        tmpStr += "Результат " + cnt.toString() + " ==>   \tID: " + element.get("id") + " Название: " + element.get("name") + ".";
-        System.out.println(tmpStr);
+        tmpStr += "\nРезультат " + cnt.toString() + " ==>   \tID: " + element.get("id") + " Название: " + element.get("name") + ".";
+      
       } 
-      System.out.println(" ---------------------- ");  
+      
+      tmpStr += "\n ---------------------- "; 
+
+      return tmpStr;
+
     }
 
     public static void PrintAllLotery(PriorityQueue<ArrayList<HashMap<String,String>>> myListLottery) {
@@ -205,11 +213,29 @@ class ToyShop {
       System.out.println(" ---------------------- ");
       for (ArrayList<HashMap<String,String>> element: myListLottery) {
         System.out.println("> РОЗЫГРЫШ №: " + cnt.toString());
+        System.out.println("> Дата проведения: " + element.get(0).get("date"));
         System.out.println(" ---------------------- ");
-        PrintLotery(element);
+        System.out.println(PrintLotery(element));
         cnt++;
       }  
 
     }
+
+    public static void WriteAllLotery() {
+
+      try {
+        FileWriter writer = new FileWriter("fileForWrite.txt", true);
+  
+        writer.write("Hello, Hexlet!"); // Hello, Hexlet!
+        writer.write("\n");
+  
+        writer.close();
+  
+      } catch (IOException e) {
+        System.out.println("Возникла ошибка во время записи файла, проверьте данные.");
+      }
+
+    }
+    
 
   }
