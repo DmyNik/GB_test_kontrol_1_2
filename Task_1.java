@@ -33,7 +33,7 @@ class ToyShop {
     public void InitEmptyToy(String id, String name) {
       
       if (id == "") { id = "0"; }
-      if (name == "") { name = "Нет игрушки"; }
+      if (name == "") { name = "Игрушка не выпала"; }
   
       idEmptyToy = id;
       nameEmptyToy = name;
@@ -158,12 +158,14 @@ class ToyShop {
       myToyShop = new ToyShop(id1, name1, probability1); 
       // Запускаем розыгрыш игрушки
       myToyShop.LaunchLotteryToy(listToy = new ArrayList<HashMap<String,String>>(), 10);      
+      System.out.println(" ---------------------- ");
       System.out.println("> ДЕМОНСТРАЦИЯ ОДНОГО РОЗЫГРЫША: ");
+      System.out.println(" ---------------------- ");
       // Выводим на экран розыгрыш игрушки
       PrintLotery(listToy);
-      
+       
       System.out.println("> ДЕМОНСТРАЦИЯ СЕРИИ РОЗЫГРЫШЕЙ: ");
-
+      System.out.println(" ---------------------- ");
       // Создаем массив из трех розыгрышей
       Integer cnt = 0; 
       for (int i = 0; i < 3; i++) {
@@ -200,7 +202,7 @@ class ToyShop {
     public static void PrintAllLotery(PriorityQueue<ArrayList<HashMap<String,String>>> myListLottery) {
 
       Integer cnt = 1;
-      
+      System.out.println(" ---------------------- ");
       for (ArrayList<HashMap<String,String>> element: myListLottery) {
         System.out.println("> РОЗЫГРЫШ №: " + cnt.toString());
         System.out.println(" ---------------------- ");
