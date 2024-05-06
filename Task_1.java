@@ -111,7 +111,6 @@ class ToyShop {
       // System.out.println(cmp1.get(0).get("date"));
       // System.out.println(cmp2.get(0).get("date"));
       return cmp1.get(0).get("date").compareTo(cmp2.get(0).get("date"));         
-      // return 1;
     } 
   }
 
